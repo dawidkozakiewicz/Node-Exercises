@@ -1,0 +1,14 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "live coding",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app"
+  },
+  "author": "Dawid Kozakiewicz",
+  "license": "ISC",
+  "dependencies": {
+    "validator": "^10.11.0"
+  }
+}
