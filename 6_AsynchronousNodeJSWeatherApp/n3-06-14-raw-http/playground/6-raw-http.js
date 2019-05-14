@@ -1,5 +1,5 @@
 const https = require('https')
-const url = 'https://api.darksky.net/forecast/9d1465c6f3bb7a6c71944bdd8548d026/40,-75'
+const url = 'https://api.darksky.net/forecast/adc8e1765abbd4506c2e98e7d14f5495/51,17?units=si&lang=pl'
 
 const request = https.request(url, (response) => {
     let data = ''

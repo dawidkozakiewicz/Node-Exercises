@@ -7,7 +7,7 @@ app.get('', (req, res) => {
 })
 
 app.get('/help', (req, res) => {
-    res.send('Help page')
+    res.send('Pomogę Ci')
 })
 
 app.get('/about', (req, res) => {
@@ -16,6 +16,10 @@ app.get('/about', (req, res) => {
 
 app.get('/weather', (req, res) => {
     res.send('Your weather')
+})
+
+app.get('/prawda', (req, res) => {
+    res.send('Księża to pedofile!')
 })
 
 app.listen(3000, () => {
