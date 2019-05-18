@@ -3,7 +3,8 @@ const express = require('express')
 
 const app = express()
 const publicDirectoryPath = path.join(__dirname, '../public')
-
+console.log(__dirname)
+console.log(publicDirectoryPath)
 app.set('view engine', 'hbs')
 app.use(express.static(publicDirectoryPath))
 
