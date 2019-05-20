@@ -6,11 +6,8 @@ const app = express()
 
 // Define paths for Express config
 const publicDirectoryPath = path.join(__dirname, '../public')
-console.log(publicDirectoryPath)
 const viewsPath = path.join(__dirname, '../templates/views')
-console.log(viewsPath)
 const partialsPath = path.join(__dirname, '../templates/partials')
-console.log(partialsPath)
 
 // Setup handlebars engine and views location
 app.set('view engine', 'hbs')
@@ -44,13 +41,25 @@ app.get('/help', (req, res) => {
 
 app.get('/weather', (req, res) => {
     res.send({
-        forecast: 'Bangla',
-        location: 'Wrocław'
+        forecast: 'It is snowing',
+        location: 'Philadelphia'
     })
 })
 
-app.get('/gogo', (req, res) => {
-    res.render('gogo')
+app.get('/help/*', (req, res) => {
+    res.render('404', {
+        title: '404',
+        name: 'Abraham Breslauer',
+        errorMessage: 'Help article not found.'
+    })
+})
+
+app.get('*', (req, res) => {
+    res.render('404', {
+        title: '404',
+        name: 'Abraham Breslauer',
+        errorMessage: 'Page not found.'
+    })
 })
 
 app.listen(3000, () => {
