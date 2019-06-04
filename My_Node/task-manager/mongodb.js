@@ -40,16 +40,35 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
     //     console.log(result.ops)
     // })
 
-    db.collection('tasks').insertMany([
+    // db.collection('tasks').insertMany([
+    //     {
+    //         description: 'Clean the house',
+    //         completed: true
+    //     },{
+    //         description: 'Renew inspection',
+    //         completed: false
+    //     },{
+    //         description: 'Pot plants',
+    //         completed: false
+    //     }
+    // ], (error, result) => {
+    //     if (error) {
+    //         return console.log('Unable to insert tasks!')
+    //     }
+
+    //     console.log(result.ops)
+    // })
+
+    db.collection('fruits').insertMany([
         {
-            description: 'Clean the house',
-            completed: true
+            description: 'banana',
+            tasty: true
         },{
-            description: 'Renew inspection',
-            completed: false
+            description: 'apple',
+            tasty: false
         },{
-            description: 'Pot plants',
-            completed: false
+            description: 'plum',
+            tasty: false
         }
     ], (error, result) => {
         if (error) {
@@ -58,4 +77,5 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
 
         console.log(result.ops)
     })
+
 })
