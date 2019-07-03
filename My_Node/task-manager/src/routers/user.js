@@ -13,6 +13,15 @@ router.post('/users', async (req, res) => {
     }
 })
 
+router.post('/users/login', async (req, res) => {
+    try {
+        const user = await User.findByCredentials(req.body.email, req.body.password)
+        res.send(user)
+    } catch (e) {
+        res.status(400).send()
+    }
+})
+
 router.get('/users', async (req, res) => {
     try {
         const users = await User.find({})
@@ -40,24 +49,17 @@ router.get('/users/:id', async (req, res) => {
 
 router.patch('/users/:id', async (req, res) => {
     const updates = Object.keys(req.body)
-    console.log(`these are updates: ${updates}`)
     const allowedUpdates = ['name', 'email', 'password', 'age']
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
-    console.log(`to są updates: ${updates}`)
+
     if (!isValidOperation) {
         return res.status(400).send({ error: 'Invalid updates!' })
     }
 
     try {
         const user = await User.findById(req.params.id)
-        console.log(`this is first user: ${user}`)
-        updates.forEach((update) => {
-            user[update] = req.body[update]
-            console.log(`${user[update]} = ${req.body[update]}`)
-            console.log(`this is update: ${update}`)
-            console.log(`this is user[update]: ${user[update]}`)
-            console.log(`this is req.body[update]: ${req.body[update]}`)
-        })
+
+        updates.forEach((update) => user[update] = req.body[update])
         await user.save()
 
         if (!user) {
